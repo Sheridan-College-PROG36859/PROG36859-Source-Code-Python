@@ -7,7 +7,7 @@ class Student :
     __students = []
 
     # Although static, this is also considered a CONST variable because we use capatial letters
-    VERSION = 0
+    COLLEGE_NAME = "Sheridan"
 
     # A Class method that can access the private static variables
     @classmethod
@@ -24,10 +24,11 @@ class Student :
         Student.__students.append(self)
         self.name = name
         self.age = age
-        if not isinstance(grades, list) :
-            raise TypeError("Error grades is not a list")
-        if not all (type(item) is float for item in grades) :
-            raise TypeError("All items in grades must be floats")
+        if grades != None:
+            if not isinstance(grades, list) :
+                raise TypeError("Error grades is not a list")
+            if not all (type(item) is float for item in grades) :
+                raise TypeError("All items in grades must be floats")
         self.grades = grades
         if id == None :
             self.__id = Student.__id
@@ -55,18 +56,23 @@ class Student :
     def get_id(self) :
         return self.__id 
 
+    # Magic method __str__ to return a readble string for the Student
+    def __str__(self):
+        return f'Student: {self.name} is {self.age} old'
 
-s1 = Student("Bob", 20, [70.5, 34.5, 55.8, 90.8])
-s2 = Student("Fred", 22, [90.2, 40.9, 50.8, 20.8])
 
-print(s1.display())
-print(s2.display())
+if __name__ == "__main__":
+    s1 = Student("Bob", 20, [70.5, 34.5, 55.8, 90.8])
+    s2 = Student("Fred", 22, [90.2, 40.9, 50.8, 20.8])
 
-print(f"Next id: {Student.get_next_id()}")
+    print(s1.display())
+    print(s2.display())
 
-s1.set_phone_number("(905)555-1234")
-print(s1.get_phone_number())
-print(s1._phone_number)
-print(s2.get_phone_number())
+    print(f"Next id: {Student.get_next_id()}")
 
-print(Student.get_students())
+    s1.set_phone_number("(905)555-1234")
+    print(s1.get_phone_number())
+    print(s1._phone_number)
+    print(s2.get_phone_number())
+
+    print(Student.get_students())
