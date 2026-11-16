@@ -1,16 +1,14 @@
-from Item import Item
-
 if __name__ == '__main__':
-    items = {101: 'Book', 202: 'Model', 303: 'Video Game'}
+    dictionary = {101: 'Book', 202: 'Model', 303: 'Video Game'}
 
     # print the dictionary
     
-    # print the value of key = 222
+    # print the value of key = 202
     
     # try to print a key that does not exist
 
     # add an element, always check for key
-
+    
     # delete an element, always check for key
 
     # get the length of the dictionary
@@ -36,8 +34,15 @@ if __name__ == '__main__':
 
     # print each the items, keys and values
 
-
     # Dictionary comprehensions
     campuses = ('Oakville', 'Mississauga', 'Brampton')
     student_count = (5000, 4000, 6000)
+
+    # Combine the campuses and student_count
+
+    # Output only the campuses with student_count greater than 5000
+
+    # New dictionary of campuses with student_count greater than 5000
+
+    #reverse key and values
 
