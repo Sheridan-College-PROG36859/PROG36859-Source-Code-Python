@@ -104,7 +104,7 @@ def Random_File_Access() :
         print(value)
         print(file.tell())
         pass
-    pass
+    pass    
 
 # Write/Read with pickle
 
