@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+import pickle
 
 @dataclass
 class UserAccount :
@@ -99,14 +100,62 @@ def Read_UserAccount_as_records() :
 # Random File Access
 def Random_File_Access() :
     with open("./Files/RandomFile.txt", "rb") as file:
-        print(file.tell())
+        print("Tell: " + str(file.tell()))
         value = float(file.read(4))
         print(value)
-        print(file.tell())
+        print("Tell: " + str(file.tell()))
+        print(file.read(10).decode())
+        print("Tell: " + str(file.tell()))
+
+        file.seek(2, 1)
+        print("Tell: " + str(file.tell()))
+        print(file.read(5).decode())
+        print("Tell: " + str(file.tell()))
+
+        file.seek(-5, 1)
+        print("Tell: " + str(file.tell()))
+        print(file.read(5).decode())
+        print("Tell: " + str(file.tell()))
+
+        file.seek(0, 0)
+        print(file.read(5).decode())
+
+        file.seek(-10, 2)
+        print(file.read())
+
         pass
     pass    
 
-# Write/Read with pickle
+# Write/Read binary and with pickle
+def Binary_Pickle_Files() :
+
+    with open("./Files/binary.dat", "wb") as file:
+        file.write(str.encode("Hello"))
+        file.write(int(10).to_bytes(4))
+        pass
+
+    with open("./Files/binary.dat", "rb") as file :
+        string = file.read(5).decode()
+        print(string)
+        int_bytes = file.read(4)
+        print(int.from_bytes(int_bytes))
+        pass
+
+    with open("./Files/pickle.data", "wb") as file:
+        # pickle.dump(10, file)
+        user = UserAccount(0, "Bob")
+        print(user)
+        pickle.dump(user, file)
+        pass
+
+    with open("./Files/pickle.data", "rb") as file:
+        # value = pickle.load(file)
+        # print(value)
+        user = pickle.load(file)
+        print(user)
+        pass
+
+    pass
 
 if __name__ == "__main__" :
     # write_simple_data()
@@ -115,5 +164,6 @@ if __name__ == "__main__" :
     # Read_UserAccount()
     # Write_UserAccount_as_records()
     # Read_UserAccount_as_records()
-    Random_File_Access() 
+    # Random_File_Access() 
+    Binary_Pickle_Files()
     pass
