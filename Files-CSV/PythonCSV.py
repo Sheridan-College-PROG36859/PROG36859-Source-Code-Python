@@ -12,6 +12,8 @@ def Read_CSV_file_Manually() :
             split = record.split(',')
             print(f'{split[0]},{split[1]},{split[2]},{split[3]}')
             record = file.readline().rstrip()
+            pass
+        pass
     pass
 
 # Read a CSV file line by line
@@ -23,6 +25,7 @@ def Read_CSV_file_line_by_line() :
             # print(line[1])
             print(len(line))
             print(f'{line[0]}, {line[1]}, {line[2]}, {line[3]}')
+            pass
         pass
     pass
 
@@ -34,6 +37,8 @@ def Read_CSV_file_list_of_records() :
         records = list(reader)
         for rec in records :
             print(rec)
+            pass
+        pass
     pass
 
 # Read a CSV file as a dictionary
@@ -43,6 +48,7 @@ def Read_CSV_file_dictionary() :
         dictionary_reader = csv.DictReader(file, delimiter=',')
         for record in dictionary_reader :
             print(record)
+            pass
         pass
     pass
 
@@ -53,6 +59,7 @@ def Read_CSV_file_list_of_dictionary_items() :
         dictionary_reader = csv.DictReader(file, delimiter=',')
         for record in dictionary_reader :
             print(f'{int(record['id'])}, {record['name']}')
+            pass
         pass
     pass
 
@@ -66,7 +73,8 @@ def Read_CSV_Duplicate_the_file() :
             csv_out = csv.writer(outFile)
             for record in reader :
                 csv_out.writerow(record)
-
+                pass
+            pass
         pass
     pass
 
@@ -83,6 +91,8 @@ def Read_CSV_filtered_file() :
             csv_out = csv.writer(outFile)
             for monster in filter_monsters :
                 csv_out.writerow(f'{monster['name']},{monster['maxHealth']}')
+                pass
+            pass
         pass
     pass
 
